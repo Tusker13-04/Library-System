@@ -49,6 +49,7 @@ except:
     df.to_sql(name="bookrev", if_exists="append", con=con, index=False)
     print("Data written to SQL")
 
+
 # adding records to the csv file
 def adding():
     # adding new books
@@ -79,8 +80,6 @@ def adding():
     main()
 
 
-
-
 # reading a review
 def ask():
     # return review by sno
@@ -89,8 +88,6 @@ def ask():
     print(pd.read_sql_query("SELECT review FROM bookrev WHERE sno = %s", con, params=(ask,)))
 
     main()
-
-
 
 
 def reading():
@@ -111,8 +108,6 @@ def reading():
     main()
 
 
-
-
 def author():
     print(df["author"])
     # reading a review by the authors name
@@ -124,7 +119,6 @@ def author():
     else:
         print("Author not found")
     main()
-
 
 
 # reading review by genre
@@ -141,13 +135,9 @@ def genre():
     main()
 
 
-
-
 def topten():
     # displaying the top ten books with the highest rating from sql
     print(pd.read_sql_query("SELECT sno,book,rating FROM bookrev ORDER BY rating DESC LIMIT 5", con))
-
-
 
     yorn = input("Do you want to read a review of any book?(yes/no): ")
 
